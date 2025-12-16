@@ -5,9 +5,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { dataSourceOptions } from 'db/data-source';
 
 import { UsersModule } from './users/users.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
-  imports: [TypeOrmModule.forRoot(dataSourceOptions), UsersModule],
+  imports: [TypeOrmModule.forRoot(dataSourceOptions), UsersModule,ConfigModule],
   controllers: [AppController],
   providers: [AppService],
 })
