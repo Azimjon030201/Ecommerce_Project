@@ -59,7 +59,7 @@ export class UsersService {
     return await this.usersRepository.findOneBy({ email })
   }
   accessToken(user: UserEntity): string {
-    return sign({ id: user.id, email: user.email }, process.env.ACCESS_TOKEN_SECRET_KEY as string, { expiresIn: process.env.ACCESS_TOKEN_EXPIRE_DATE as string } as any);
+    return sign({ id: user.id, email: user.email }, process.env.ACCESS_TOKEN_SECRET_KEY as string, { expiresIn: parseInt(process.env.ACCESS_TOKEN_EXPIRE_DATE || '3600', 10) });
   }
 
 }
